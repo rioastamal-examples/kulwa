@@ -20,13 +20,15 @@ Disini kita juga tidak membahas perintah-perintah dasar seperti membuat file, pi
 
 ## Command Line Interface
 
-Command Line Interface (CLI) adalah sebuah cara untuk berinteraksi dengan sebuah program komputer menggunakan baris perintah berbasis teks. Program disini dapat berupa Operating System (OS) itu sendiri atau sebuah program biasa yang berjalan diatas OS.
+**Command Line Interface (CLI)** adalah sebuah cara untuk berinteraksi dengan sebuah program komputer menggunakan baris perintah berbasis teks. Program disini dapat berupa Operating System (OS) itu sendiri atau sebuah _user_space_ program yang berjalan diatas OS.
+
+Contoh _user_space_ program misalnya: curl, sed, wget, ls dan lainnya.
 
 ## Shell
 
 Shell adalah sebuah program yang memungkinkan pengguna untuk berintaksi dengan OS menggunakan command line. Umumnya setiap OS memiliki shell default bawaan contohnya pada kebanyakan distro Linux adalah **Bash**. MacOS dan beberapa distro BSD juga menggunakan Bash sebagai default.
 
-Contoh tampilan Bash shell pada Linux adalah sebagai berikut:
+Contoh tampilan Bash shell pada Linux ketika kita login atau membuka Terminal window.
 
 ```
 rio@localhost:~$
@@ -50,7 +52,7 @@ Sebagai contoh untuk menjalankan MySQL Server kita harus menjalankan program dae
 
 ## Command Line Argument
 
-Secara sederhana argumen adalah nilai atau variable yang dibutuhkan dan ditempatkan setelah nama program dengan pemisah minimal satu karakter whitespace (spasi). 
+Secara sederhana argumen adalah nilai atau variable yang dibutuhkan dan ditempatkan setelah nama program dengan pemisah minimal satu karakter whitespace (spasi/tab). 
 
 Contoh pada program copy file **cp** memerlukan dua argumen 1) File sumber dan 2) Lokasi tujuan.
 
@@ -233,7 +235,7 @@ $ cat /tmp/tanggal.txt
 Sekarang tanggal Fri Mar  1 06:59:22 WIB 2019
 ```
 
-**Simbol ```>>```** digunakan untuk mengalihkan output ke sebuah file. Jika file tersebut belum ada maka akan dibuat dan jika file tersebut sudah terisi maka akan ditambahkan dengan separator baris baru.
+**Simbol >>** digunakan untuk mengalihkan output ke sebuah file. Jika file tersebut belum ada maka akan dibuat dan jika file tersebut sudah terisi maka akan ditambahkan dengan separator baris baru.
 
 ```
 $ echo "Baris satu" >> /tmp/myfile.txt
@@ -281,7 +283,7 @@ ls: /foo/bar: No such file or directory
 
 Pada perintah diatas kita meredirect STDERR ke STDOUT dengan perintah **2>&1** baru output STDOUT kita redirect ke /tmp/error.txt.
 
-**TIPS**: Jika kita ingin meredirect output tetapi tidak ingin menyimpan ke file, kita dapat menggunakan special file **/dev/null**. 
+*TIPS*: Jika kita ingin meredirect output tetapi tidak ingin menyimpan ke file, kita dapat menggunakan special file **/dev/null**. 
 
 ```
 $ echo "KulWA PHPID Surabaya" > /dev/null
@@ -297,6 +299,7 @@ Kita ambil contoh penggunaan pipe secara sederhana yaitu dengan mengubah huruf k
 
 ```
 $ echo "phpid surabaya" | tr '[:lower:]' '[:upper:]'
+PHPID SURABAYA
 ```
 
 Contoh yang lebih kompleks misal kita ingin mendapatkan process id (PID) dari MySQL daemon yaitu mysqld. Kita akan memanfaatkan beberapa program dan melakukan piping antar proses agar mendapatkan hasil yang diinginkan.

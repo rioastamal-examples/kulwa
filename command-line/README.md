@@ -14,7 +14,7 @@ Materi yang akan dibahas pada KulWA tentang command line adalah berikut.
 
 Command line yang akan dibahas berbasis pada penggunaan Shell Bash yang populer digunakan pada Linux dan MacOS. 
 
-Pembahasan pada KulWA ini tidak membahas pembuatan shell script tetapi sebatas penggunaan interpreter (prompt) saja. 
+Pembahasan pada KulWA ini tidak membahas pembuatan shell script tetapi sebatas penggunaan perintah pada interpreter (prompt) saja. 
 
 Disini kita juga tidak membahas perintah-perintah dasar seperti membuat file, pindah direktori dan sebagainya. Karena yang saya tekankan pada KulWA ini adalah konsep pada command line.
 
@@ -26,10 +26,10 @@ Command Line Interface (CLI) adalah sebuah cara untuk berinteraksi dengan sebuah
 
 Shell adalah sebuah program yang memungkinkan pengguna untuk berintaksi dengan OS menggunakan command line. Umumnya setiap OS memiliki shell default bawaan contohnya pada kebanyakan distro Linux adalah **Bash**. MacOS dan beberapa distro BSD juga menggunakan Bash sebagai default.
 
-Contoh tampilan Bash shell pada linux salah satunya adalah sebagai berikut:
+Contoh tampilan Bash shell pada Linux adalah sebagai berikut:
 
 ```
-rio@localhost:~ 
+rio@localhost:~$
 ```
 
 Pada sistem operasi Unix/Unix-like biasanya digunakan simbol `$` dollar untuk menandakan interaksi dengan shell.
@@ -44,7 +44,7 @@ C:\>
 
 Disini kita tidak membahas program shell selain Bash misal zsh, ksh, ash dan beberapa lainnya. Kita hanya fokus pada penggunaan Bash karena salah satu shell yang paling populer.
 
-Shell juga digunakan untuk menjalankan program lain, sehingga program tersebut berapa pada RAM OS. Hampir semua _user space_ program dijalankan menggunakan shell.
+Shell juga digunakan untuk menjalankan program lain, sehingga program tersebut ditempatkan pada RAM OS. Hampir semua _user space_ program dijalankan menggunakan shell.
 
 Sebagai contoh untuk menjalankan MySQL Server kita harus menjalankan program daemon yaitu `mysqld` pada shell terlebih dahulu.
 
@@ -52,7 +52,7 @@ Sebagai contoh untuk menjalankan MySQL Server kita harus menjalankan program dae
 
 Secara sederhana argumen adalah nilai atau variable yang dibutuhkan dan ditempatkan setelah nama program dengan pemisah minimal satu karakter whitespace (spasi). 
 
-Contoh pada program **cp** memerlukan dua argumen 1) File sumber dan 2) Lokasi tujuan.
+Contoh pada program copy file **cp** memerlukan dua argumen 1) File sumber dan 2) Lokasi tujuan.
 
 ```
 $ cp /foo/bar /tmp/
@@ -102,7 +102,7 @@ Options yang menggunakan kata sering disebut dengan GNU style options.
 
 Environment variable digunakan untuk menyimpan konfigurasi yang mempengaruhi jalannya suatu program pada shell.
 
-Untuk mengtahui daftar environment yang tersedia pada shell gunakan perintah env. Contoh output dari perintah tersebut adalah sebagai berikut.
+Untuk mengetahui daftar environment yang tersedia pada shell gunakan perintah env. Contoh output dari perintah tersebut adalah sebagai berikut.
 
 ```
 $ env
@@ -189,7 +189,7 @@ bin   dev  home  lib64 	     media  opt   root 	sbin  sys  usr
 boot  etc  lib 	 lost+found  mnt    proc  run  	srv   tmp  var
 ```
 
-Relative Path adalah lokasi yang dilihat dair posisi direktori saat ini. Direktori saat ini ditandai dengan single dot "." sedangkan direktori parent ditandangan dengan double dot "..".
+Relative Path adalah lokasi yang dilihat dari posisi direktori saat ini. Direktori saat ini ditandai dengan single dot "." sedangkan direktori parent ditandangan dengan double dot "..".
 
 Contoh relative path untuk program ```ls``` ketika kita berada pada direktori /home adalah kita perlu naik satu direktori.
 
@@ -201,7 +201,7 @@ bin   dev  home  lib64 	     media  opt   root 	sbin  sys  usr
 boot  etc  lib 	 lost+found  mnt    proc  run 
 ```
 
-Penggunaan tanda "./" adalah opsional tetapi diperlukan kita akan mengeksekusi sebuah program pada direktori yang sama. Sebagai contoh mari kita eksekusi program **hello.sh** yang telah kita buat sebelumnya.
+Penggunaan tanda "./" adalah opsional tetapi diperlukan ketika akan mengeksekusi sebuah program pada direktori yang sama. Sebagai contoh mari kita eksekusi program **hello.sh** yang telah kita buat sebelumnya.
 
 ```
 $ cd /tmp/kulwa
@@ -213,7 +213,7 @@ Tanda ./ pada perintah ```./hello.sh``` menandakan bahwa kita mengeksekusi progr
 
 ## Redirection
 
-Redirection adalah sebuah proses untuk pengalihan dari satu file descriptor ke lainnya. Didalam shell secara default terdapat tiga buah file descriptor yaitu Standard Input (STDIN), Standard Output (STDOUT) dan Standard Error (STDERR).
+Redirection adalah sebuah proses untuk pengalihan antar file descriptor. Didalam shell secara default terdapat tiga buah file descriptor yaitu Standard Input (STDIN), Standard Output (STDOUT) dan Standard Error (STDERR).
 
 Setiap file descriptor memiliki kode masing-masing, ketiganya adalah sebagai berikut.
 
@@ -223,7 +223,7 @@ Setiap file descriptor memiliki kode masing-masing, ketiganya adalah sebagai ber
 
 ### Simbol Redirection
 
-**Simbol ```>```** digunakan untuk mengalihkan output ke sebuah file. Jika file tersebut belum ada maka akan dibuat dan jika file tersebut terdapat konten maka akan ditimpa.
+**Simbol ```>```** digunakan untuk mengalihkan output ke sebuah file. Jika file tersebut belum ada maka akan dibuat dan jika file tersebut sudah terisi maka akan ditimpa.
 
 Perhatikan contoh berikut.
 
@@ -233,10 +233,10 @@ $ cat /tmp/tanggal.txt
 Sekarang tanggal Fri Mar  1 06:59:22 WIB 2019
 ```
 
-**Simbol ```>>```** digunakan untuk mengalihkan output ke sebuah file. Jika file tersebut belum ada maka akan dibuat dan jika file tersebut terdapat konten maka akan ditambahkan.
+**Simbol ```>>```** digunakan untuk mengalihkan output ke sebuah file. Jika file tersebut belum ada maka akan dibuat dan jika file tersebut sudah terisi maka akan ditambahkan dengan separator baris baru.
 
 ```
-$ echo "Baris satu" > /tmp/myfile.txt
+$ echo "Baris satu" >> /tmp/myfile.txt
 $ echo "Baris dua" >> /tmp/myfile.txt
 Baris satu
 Baris dua
@@ -261,7 +261,7 @@ ls: /foo/bar: No such file or directory
 $ cat /tmp/error.txt
 ```
 
-Dapat kita lihat bahwa output dari perintah ls yang error tidak tersimpan ke file /tmp/error.txt padahal sudah output sudah diredirect kesana. Mengapa demikian?
+Dapat kita lihat bahwa output dari perintah ls yang error tidak tersimpan ke file /tmp/error.txt padahal output sudah diredirect kesana. Mengapa demikian?
 
 Hal itu dikarenakan ketika program ```ls``` menghasilkan error (file tidak ditemukan) ia tidak menuliskan ke STDOUT melainkan ke STDERR. Mari kita coba lagi dengan menangkap STDERR.
 
@@ -351,8 +351,7 @@ Tanda **&&** digunakan jika kita ingin mengeksekusi perintah yang dilakukan hany
 Selain itu terdapat tanda **||** yang digunakan jika kita ingin mengeksekusi perintah yang dilakukan jika perintah sebelumnya terdapat error.
 
 ```
-$ touch /foo.txt 2> /dev/null || \
-echo "File tidak dapat dibuat, kemungkinan permission error"
+$ touch /foo.txt 2> /dev/null || echo "File tidak dapat dibuat, kemungkinan permission error"
 ```
 
 ## Tentang .bashrc
@@ -361,7 +360,15 @@ Ketika Bash shell dijalankan ia akan mencoba membaca special file ~/.bashrc. Jad
 
 ### Menginstall Beberapa Versi Program
 
+Salah satu hal yang sering kita tempatkan pada file ~/.bashrc adalah penggunaan custom PATH. Misal kita memiliki instalasi default PHP 5 di **/usr/bin/php** dan kita memiliki PHP7.1 pada **/usr/local/php/7.1/bin/php**.
 
+Kita ingin agar yang digunakan adalah PHP7.1 jadi kita perlu menempatkan path PHP7.1 diawal PATH. Maka kita menambahkan baris berikut pada ~/.bashrc.
+
+```
+export PATH=/usr/local/php/7.1/bin:$PATH
+```
+
+Ketika kita membuka terminal dan menjalankan program ```php``` maka binary yang dieksekusi adalah yang berada pada direktori /usr/local/php/7.1.
 
 ## Tentang
 
@@ -370,5 +377,5 @@ Ketika Bash shell dijalankan ia akan mencoba membaca special file ~/.bashrc. Jad
 | Judul | KulWA Command Line Linux - PHPID Surabaya |
 | Penulis | Rio Astamal \<rio@rioastamal.net> |
 | Format | Markdown |
-| URL | https://github.com/rioastamal-examples/
+| URL | [https://github.com/rioastamal-examples/kulwa/blob/master/command-line/README.md](https://github.com/rioastamal-examples/kulwa/blob/master/command-line/README.md) | 
 | Lisensi | [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
